@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+    <meta charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shawty</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+</head>
+<style>
+    body, input, pre{  
+        background-color: #111 !important;
+        color: #eee;
+    }
+    .bg-white {
+    background-color: #000 !important;
+    }
+    .card {
+        margin: 0 auto; 
+        float: none;
+        margin-bottom: 10px; 
+        margin-top: 10px; 
+        max-width: 500px;
+        padding: 7px;
+        background-color: #111 !important;
+        color: #eee;
+        
+    }   
+</style>
+
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <span class="navbar-brand mb-0 h1">Shawty</span>
+    </nav>
+
+    <main id = "app">
+        <div class="card">
+
+        <form @submit.prevent="createURL()">
+            <div class="form-group">
+                <label for="url">URL to make shawty </label>
+                <input class="form-control" type="url" v-model="url" name="url" id="url" aria-describedby="url" placeholder="URL">
+            </div>
+            <div class="form-group">
+                <label for="alias">Shawty name</label>
+                <input class="form-control" v-model="alias" name="alias" id="alias" placeholder="Shorter URL">
+                <small id="alias" class="form-text text-muted">You can also leave this field empty for a randomly generated URL</small>
+
+            </div>
+            <button type="submit" class="btn btn-primary">Go Shawty</button>
+
+        </form>
+        </div>
+        <pre v-if="created">
+            {{JSON.stringify(created,null,2)}}
+        </pre>
+    </main>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
