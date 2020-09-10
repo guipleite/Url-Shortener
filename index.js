@@ -1,5 +1,4 @@
 const express = require('express');
-const cors = require('cors');
 const morgan = require('morgan');
 // const helmet = require('helmet');  was causing issues importing Vue
 const yup = require('yup');
@@ -17,7 +16,6 @@ const port = process.env.PORT || 420;
 
 // app.use(helmet());  was causing issues importing Vue
 app.use(morgan('tiny'));
-app.use(cors());
 app.use(express.json());
 app.use(express.static('./public'));
 
@@ -33,7 +31,7 @@ app.get('/:id', async(req,res) =>{
             res.redirect(url.url);
         }  
 
-        res.redirect(`/?error=${alias} not found`) 
+        res.redirect(`/`) 
 
     } catch (error) {
         res.redirect(`/?error=Nothing here m8`) 
