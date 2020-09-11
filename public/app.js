@@ -26,8 +26,20 @@ const app = new Vue({
         showData(created){
             const obj = JSON.stringify(created,null,2);
             const data = JSON.parse(obj);
+
             if (data.stack){
-                return "Error, alias already exists or is invalid, choose another one";
+                if(data.stack.startsWith("ValidationError: url is a required field")){
+                    return "Error, please insert an URL."
+                }
+                else if(data.stack.startsWith("ValidationError: alias must match the following")){
+                    return "Error, the alias is invalid, choose another one that only includes characters, numbers or _ .";
+                }
+                else if(data.stack.startsWith("MongoError: Alias already exists")){
+                    return "Error, alias already exists, choose another one.";
+                }
+                else{
+                    return data;
+                }
             }
             else{
                 data_alias = data.alias;

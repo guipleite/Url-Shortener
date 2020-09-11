@@ -43,7 +43,7 @@ app.get('/:id', async(req,res) =>{
 // });
 
 const schema = yup.object().shape({
-    alias: yup.string().trim().matches(/^\w*$/), // Regex: characters, numbers, _ or null
+    alias: yup.string().trim().matches(/^\w*$/), // Regex: characters, numbers, _ or null /[\w\-]/i
     url:   yup.string().trim().url().required(),
 });
 
