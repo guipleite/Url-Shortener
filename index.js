@@ -43,7 +43,7 @@ app.get('/:id', async(req,res) =>{
 // });
 
 const schema = yup.object().shape({
-    alias: yup.string().trim().matches(/[\w\-]/i),
+    alias: yup.string().trim().matches(/^\w*$/), // Regex: characters, numbers, _ or null
     url:   yup.string().trim().url().required(),
 });
 
@@ -63,12 +63,10 @@ app.post('/url', async(req,res,next) =>{
         }
 
         alias = alias.toLowerCase();
-        // const secret = nanoid(8).toLowerCase();
 
         const newURL = {
             url,
             alias,
-            // secret
         };
 
         const created = await urls.insert(newURL);
