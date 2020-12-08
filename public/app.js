@@ -16,7 +16,8 @@ const app = new Vue({
                 },
                 body: JSON.stringify({
                     url: this.url,
-                    alias: this.alias
+                    alias: this.alias,
+                    clicks: 0
                 })
             });
 
