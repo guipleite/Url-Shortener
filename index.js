@@ -28,6 +28,7 @@ app.get('/:id', async(req,res) =>{
         const url = await urls.findOne({alias});
         
         if(url){
+            urls.update(url, { $inc: {clicks:1}}); // Increments the clicks counter
             res.redirect(url.url);
         }  
 
@@ -38,9 +39,24 @@ app.get('/:id', async(req,res) =>{
     }
 });
 
-// app.get('/url/:id', (req,res) =>{
-//     // get a URL
-// });
+app.get('/url/:id', async(req,res) =>{
+    // get a URL
+    // console.log("heassd")
+    const{id: alias} = req.params;
+
+    try {
+        const url = await urls.findOne({alias});
+        
+        if(url){
+            console.log(url)
+        }  
+
+        // res.redirect(`/`) 
+
+    } catch (error) {
+        res.redirect(`/?error=Nothing here m8`) 
+    }
+});
 
 const schema = yup.object().shape({
     alias: yup.string().trim().matches(/^\w*$/), // Regex: characters, numbers, _ or null /[\w\-]/i
@@ -51,7 +67,7 @@ app.post('/url', async(req,res,next) =>{
     // Create a URL
 
     let {alias, url} = req.body;
-
+    const clicks = 0;
     try{
 
         await schema.validate({
@@ -67,6 +83,7 @@ app.post('/url', async(req,res,next) =>{
         const newURL = {
             url,
             alias,
+            clicks
         };
 
         const created = await urls.insert(newURL);
