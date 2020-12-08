@@ -59,10 +59,6 @@ app.get('/url/:id', async(req,res) =>{
 
         }  
 
-        // res.redirect(`/url`)
-        // res.sendFile(__dirname +'/public/url.html');
-
-
     } catch (error) {
         console.log(error)
     }
