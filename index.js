@@ -15,9 +15,14 @@ const app = express();
 const port = process.env.PORT || 420;
 
 // app.use(helmet());  was causing issues importing Vue
+
+app.engine('html', require('ejs').renderFile);
+
 app.use(morgan('tiny'));
 app.use(express.json());
-app.use(express.static('./public'));
+app.use(express.static(__dirname +'/public'));
+app.set('view engine', 'html');
+
 
 app.get('/:id', async(req,res) =>{
     // Redirect to URL
@@ -41,7 +46,6 @@ app.get('/:id', async(req,res) =>{
 
 app.get('/url/:id', async(req,res) =>{
     // get a URL
-    // console.log("heassd")
     const{id: alias} = req.params;
 
     try {
@@ -49,12 +53,18 @@ app.get('/url/:id', async(req,res) =>{
         
         if(url){
             console.log(url)
+            const timestamp = url._id.getTimestamp().toISOString().replace(/T/, ' ').replace(/\..+/, '');
+            console.log(timestamp)
+            res.render('url.html',{content:url, ts:timestamp});
+
         }  
 
-        // res.redirect(`/`) 
+        // res.redirect(`/url`)
+        // res.sendFile(__dirname +'/public/url.html');
+
 
     } catch (error) {
-        res.redirect(`/?error=Nothing here m8`) 
+        console.log(error)
     }
 });
 

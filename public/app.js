@@ -3,7 +3,8 @@ const app = new Vue({
     data:{
         url: '',
         alias: '',
-        created: null
+        created: null,
+        clicks: 0
     },
 
     methods:{
@@ -46,6 +47,14 @@ const app = new Vue({
                 data_alias = data.alias;
                 return document.URL+data_alias;
             }
+        },
+
+        showMetaData(created){
+            const obj = JSON.stringify(created,null,2);
+            const data = JSON.parse(obj);
+            data_alias = data.clicks;
+            return data_alias;
+
         },
 
         async copyURL(){

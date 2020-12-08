@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+    <meta charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shawty</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="shortcut icon" href="#">
+
+</head>
+<style>
+    body, input, pre{  
+        background-color: #111 !important;
+        color: #eee;
+    }
+
+    .bg-white {
+    background-color: #000 !important;
+    }
+
+    .card {
+        margin: 0 auto; 
+        float: none;
+        margin-bottom: 10px; 
+        margin-top: 10px; 
+        max-width: 500px;
+        padding: 7px;
+        background-color: #111 !important;
+        color: #eee;
+        
+    }   
+
+</style>
+
+
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <span class="navbar-brand mb-0 h1">Shawty</span>
+    </nav>
+
+    <main id = "app">
+        <div class="card">
+
+       
+            <h3>Shawty URL</h3>
+            <br>            <br>
+
+            <h4>Original URL: <a><h5> <%= content.url %></h5></a></h4>            <br>
+
+            <h4>Alias: <h5><a> <%= content.alias %></a></h5></h4>            <br>
+
+            <h4>DateTime Created:  <h5><%= ts %></h5></h4>            <br>
+
+            <h4>Total clicks:  <h5><%= content.clicks %></h5></h4>
+
+        </div>
+        
+        <br>
+
+
+    </main>
+
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
