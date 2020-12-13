@@ -49,7 +49,30 @@ const app = new Vue({
             }
         },
 
+        showDataUrl(created){
+            const obj = JSON.stringify(created,null,2);
+            const data = JSON.parse(obj);
+
+            if (data.stack){
+                return {msg1: "",msg2:"",
+                url: ""};;
+            }
+            else{
+                data_alias = data.alias;
+                return {msg1: "You can also go to ",msg2:" to find more about your shawty",
+                        url: document.URL+"url/"+data_alias};
+            }
+        },
+
         showMetaData(created){
+            const obj = JSON.stringify(created,null,2);
+            const data = JSON.parse(obj);
+            data_alias = data.clicks;
+            return data_alias;
+
+        },
+
+         showMetaData(created){
             const obj = JSON.stringify(created,null,2);
             const data = JSON.parse(obj);
             data_alias = data.clicks;

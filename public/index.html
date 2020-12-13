@@ -64,6 +64,9 @@
                     <span class="newUrl" id="newUrl">{{showData(created)}}</span>
                 </div>
                 <button type="submit"  class="btn btn-primary" >Copy</button>
+                <br>                <br>
+                <span class="newUrl" id="newUrlPlus">{{showDataUrl(created).msg1}}<a v-bind:href="showDataUrl(created).url">{{showDataUrl(created).url}}</a> {{showDataUrl(created).msg2}}</span>
+
             </form>
         </div>
 
